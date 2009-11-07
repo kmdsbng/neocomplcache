@@ -217,6 +217,9 @@ function! neocomplcache#manual_complete(findstart, base)"{{{
         let l:complete_result = {}
         let s:skipped = 0
         for l:complfunc in s:complfuncs_func_table
+            if !exists("l:cur_text ")
+              continue
+            endif
             let l:cur_keyword_pos = call(l:complfunc . 'get_keyword_pos', [l:cur_text])
 
             if l:cur_keyword_pos >= 0
